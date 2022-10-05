@@ -1,6 +1,8 @@
 package com.example.todo_list.service;
 
 import com.example.todo_list.model.Todo;
+import org.assertj.core.util.DateUtil;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -25,9 +27,15 @@ class TodoServiceTest {
 
     @BeforeAll
     public void init(){
-        Date date = new Date();
+
         for (int i = 0; i<5; i++){
-            Todo todo = new Todo(userName, "Tarea numero "+ i, date, true);
+
+            Date creationDate = new Date();
+            Date targetDate = new Date();
+            targetDate = DateUtil.tomorrow();
+
+            Todo todo = new Todo(userName, "Tarea numero "+ i, targetDate, true);
+            todo.setCreationDate(creationDate);
             todoService.saveTodo(todo);
         }
     }
@@ -142,4 +150,14 @@ class TodoServiceTest {
 
     /* La fecha de finalizacion debe ser mayor a la de inicio */
 
+    @Test
+    void finishDateGreaterThanStartDate() {
+
+        todoService.getTodosByUser(userName).forEach(todo -> {
+
+            Assertions.assertTrue((todo.getTargetDate().after(todo.getCreationDate())));
+
+
+        });
+    }
 }
