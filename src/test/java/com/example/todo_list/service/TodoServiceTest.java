@@ -193,5 +193,19 @@ class TodoServiceTest {
 
 
     /*add priority to Todos*/
+    @Test
+    void testAddPriority() {
+        Todo todo = new Todo(userName, "tarea nueva",new Date(),false );
+
+        int selectedPriority = 3;
+        todoService.saveTodo(todo);
+        todoService.setPriority(todo, selectedPriority);
+
+        assertTrue(todo.getPriority() == selectedPriority);
+
+    }
+
+    /*search task by description*/
+
 
 }

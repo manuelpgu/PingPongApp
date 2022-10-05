@@ -86,5 +86,11 @@ public class TodoService implements ITodoService {
 
 
 	}
+	@Override
+	public  void setPriority(Todo todo, int priority){
+		todo.setPriority(priority);
+		todoRepository.save(todo);
+	};
+
 }
 

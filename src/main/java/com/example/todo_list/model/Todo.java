@@ -30,7 +30,11 @@ public class Todo {
 
 		private  int endHour;
 
-	    public Todo() {
+		private int priority;
+
+
+
+	public Todo() {
 	        super();
 	    }
 
@@ -121,6 +125,13 @@ public class Todo {
 
 		public void setEndHour(int endHour) {
 			this.endHour = endHour;
+		}
+		public int getPriority() {
+			return priority;
+		}
+
+		public void setPriority(int priority) {
+			this.priority = priority;
 		}
 
 

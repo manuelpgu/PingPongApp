@@ -25,4 +25,7 @@ public interface ITodoService {
 	List<Todo> getFutureTodos(String user);
 
 	List<Todo> getNoDateTodos(String user);
+
+	void setPriority(Todo todo, int priority);
+
 }
