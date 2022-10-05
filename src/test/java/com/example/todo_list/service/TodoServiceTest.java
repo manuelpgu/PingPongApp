@@ -138,7 +138,8 @@ class TodoServiceTest {
             //comprobar que el text tiene imagen
             assertFalse(todo.getTargetDate().toString().isEmpty());
         });
-
     }
+
+    /* La fecha de finalizacion debe ser mayor a la de inicio */
 
 }
