@@ -26,6 +26,10 @@ public class Todo {
 
 		private String link;
 
+		private  int startHour;
+
+		private  int endHour;
+
 	    public Todo() {
 	        super();
 	    }
@@ -43,6 +47,21 @@ public class Todo {
 		this.setDescription(desc);
 		this.setTargetDate(targetDate);
 		this.setLink(link);
+	}
+
+	public Todo(long id, String userName, String description, Date targetDate, Date creationDate, String link, int startHour, int endHour) {
+		this.id = id;
+		this.userName = userName;
+		this.description = description;
+		this.targetDate = targetDate;
+		this.creationDate = creationDate;
+		this.link = link;
+		this.startHour = startHour;
+		this.endHour = endHour;
+	}
+
+	public int getStartHour() {
+		return startHour;
 	}
 
 
@@ -91,6 +110,19 @@ public class Todo {
 		public void setLink(String link) {
 			this.link = link;
 		}
+
+		public void setStartHour(int startHour) {
+			this.startHour = startHour;
+		}
+
+		public int getEndHour() {
+			return endHour;
+		}
+
+		public void setEndHour(int endHour) {
+			this.endHour = endHour;
+		}
+
 
 
 }

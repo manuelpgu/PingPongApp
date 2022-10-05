@@ -36,6 +36,8 @@ class TodoServiceTest {
 
             Todo todo = new Todo(userName, "Tarea numero "+ i, targetDate, true);
             todo.setCreationDate(creationDate);
+            todo.setStartHour(10);
+            todo.setEndHour(14);
             todoService.saveTodo(todo);
         }
     }
@@ -149,15 +151,20 @@ class TodoServiceTest {
     }
 
     /* La fecha de finalizacion debe ser mayor a la de inicio */
-
     @Test
     void finishDateGreaterThanStartDate() {
-
         todoService.getTodosByUser(userName).forEach(todo -> {
-
             Assertions.assertTrue((todo.getTargetDate().after(todo.getCreationDate())));
-
-
         });
     }
+
+    /* añadir hora de inicio y hora de final como antributos de la clase TODO y testear que se pueden añadir*/
+    @Test
+    void timeSlotsBetween() {
+        todoService.getTodosByUser(userName).forEach(todo -> {
+            Assertions.assertTrue((todo.getStartHour()<todo.getEndHour()));
+        });
+
+    }
+
 }
