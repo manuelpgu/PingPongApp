@@ -14,8 +14,9 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th width="40%">Description</th>
-						<th width="40%">Target Date</th>
+						<th width="30%">Description</th>
+						<th width="25%">Creation Date</th>
+						<th width="25%">Target Date</th>
 						<th width="20%"></th>
 					</tr>
 				</thead>
@@ -23,6 +24,8 @@
 					<c:forEach items="${todos}" var="todo">
 						<tr>
 							<td>${todo.description}</td>
+							<td><fmt:formatDate value="${todo.creationDate}"
+                            		pattern="dd/MM/yyyy" /></td>
 							<td><fmt:formatDate value="${todo.targetDate}"
 									pattern="dd/MM/yyyy" /></td>
 							<td><a type="button" class="btn btn-success"

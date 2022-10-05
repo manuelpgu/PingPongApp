@@ -54,7 +54,10 @@ public class TodoController {
 
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
 	public String showAddTodoPage(ModelMap model) {
-		model.addAttribute("todo", new Todo());
+
+		Date creationDate = new Date();
+		model.addAttribute("newTodo", new Todo());
+
 		return "todo";
 	}
 
@@ -91,7 +94,10 @@ public class TodoController {
 			return "todo";
 		}
 
+		Date date = new Date();
+
 		todo.setUserName(getLoggedInUserName(model));
+		todo.setCreationDate(date);
 		todoService.saveTodo(todo);
 		return "redirect:/list-todos";
 	}

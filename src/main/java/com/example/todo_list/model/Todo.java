@@ -22,18 +22,31 @@ public class Todo {
 
 	    private Date targetDate;
 
+		private Date creationDate;
+
+		private String link;
+
 	    public Todo() {
 	        super();
 	    }
 
-	    public Todo(String user, String desc, Date targetDate, boolean isDone) {
+	public Todo(String user, String desc, Date targetDate, boolean isDone) {
 	        super();
 	        this.setUserName(user);
 	        this.setDescription(desc);
 	        this.setTargetDate(targetDate);
 	    }
-	    
-	    public long getId() {
+
+	public Todo(String user, String desc, Date targetDate, boolean isDone, String link) {
+		super();
+		this.setUserName(user);
+		this.setDescription(desc);
+		this.setTargetDate(targetDate);
+		this.setLink(link);
+	}
+
+
+	public long getId() {
 			return id;
 		}
 
@@ -64,5 +77,20 @@ public class Todo {
 		public void setTargetDate(Date targetDate) {
 			this.targetDate = targetDate;
 		}
-	
+
+		public Date getCreationDate() {
+			return creationDate;
+		}
+		public void setCreationDate(Date creationDate) {
+				this.creationDate = creationDate;
+			}
+		public String getLink() {
+			return link;
+		}
+
+		public void setLink(String link) {
+			this.link = link;
+		}
+
+
 }

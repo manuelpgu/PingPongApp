@@ -6,7 +6,7 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading">Add TODO</div>
 				<div class="panel-body">
-					<form:form method="post" modelAttribute="todo">
+					<form:form method="post" modelAttribute="newTodo">
 						<form:hidden path="id" />
 						<fieldset class="form-group">
 							<form:label path="description">Description</form:label>
@@ -21,6 +21,8 @@
 								required="required" />
 							<form:errors path="targetDate" cssClass="text-warning" />
 						</fieldset>
+
+						<!--<input type="text" th:field="*{creationDate}"/>-->
 
 						<button type="submit" class="btn btn-success">Save</button>
 					</form:form>
