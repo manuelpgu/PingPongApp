@@ -167,4 +167,31 @@ class TodoServiceTest {
 
     }
 
+    /*añadir las tareas pasadas, futuras y sin fecha */
+
+    @Test
+    void testGetPast() {
+        todoService.getPastTodos(userName).forEach(todo -> {
+            Date now = new Date();
+            Assertions.assertTrue(todo.getTargetDate().before(now));
+        });
+    }
+
+    @Test
+    void testGetFuture() {
+        todoService.getTodosByUser(userName).forEach(todo -> {
+            Assertions.assertTrue((todo.getStartHour()<todo.getEndHour()));
+        });
+    }
+
+    @Test
+    void testGetNoDate() {
+        todoService.getTodosByUser(userName).forEach(todo -> {
+            Assertions.assertTrue((todo.getStartHour()<todo.getEndHour()));
+        });
+    }
+
+
+    /*add priority to Todos*/
+
 }

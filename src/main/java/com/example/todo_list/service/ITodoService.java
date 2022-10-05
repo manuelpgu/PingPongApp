@@ -20,4 +20,9 @@ public interface ITodoService {
 	
 	void saveTodo(Todo todo);
 
+	List<Todo> getPastTodos(String user);
+
+	List<Todo> getFutureTodos(String user);
+
+	List<Todo> getNoDateTodos(String user);
 }

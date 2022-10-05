@@ -2,6 +2,7 @@ package com.example.todo_list.service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,8 @@ public class TodoService implements ITodoService {
 	public List<Todo> getTodosByUser(String user) {
 		return todoRepository.findByUserName(user);
 	}
+
+
 
 	@Override
 	public Optional<Todo> getTodoById(long id) {
@@ -48,4 +51,40 @@ public class TodoService implements ITodoService {
 	public void saveTodo(Todo todo) {
 		todoRepository.save(todo);
 	}
+
+	@Override
+	public List<Todo> getPastTodos(String user) {
+		 List<Todo> todos = todoRepository.findByUserName(user);
+		 Date currentDate = new Date();
+		return todos.stream()
+				 .filter(todo -> todo.getTargetDate().before(currentDate))
+				.collect(Collectors.toList());
+
+
+
+	}
+	@Override
+	public List<Todo> getFutureTodos(String user) {
+		List<Todo> todos = todoRepository.findByUserName(user);
+		Date currentDate = new Date();
+		return todos.stream()
+				.filter(todo -> todo.getTargetDate().after(currentDate))
+				.collect(Collectors.toList());
+
+
+
+	}
+
+	@Override
+	public List<Todo> getNoDateTodos(String user) {
+		List<Todo> todos = todoRepository.findByUserName(user);
+		Date currentDate = new Date();
+		return todos.stream()
+				.filter(todo -> todo.getTargetDate() == null)
+				.collect(Collectors.toList());
+
+
+
+	}
 }
+
